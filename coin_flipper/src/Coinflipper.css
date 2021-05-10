@@ -1,0 +1,21 @@
+.Coinflipper {
+  display: flex;
+  justify-content: center;
+  height: 25vh;
+}
+
+.Coinflipper img {
+  width: 11%;
+}
+
+.Coinflipper button {
+  width: 8%;
+}
+
+.coin-container {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  align-items: center;
+  margin: 1em;
+}
