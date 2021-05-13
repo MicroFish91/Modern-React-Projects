@@ -1,0 +1,10 @@
+.Colorgrid {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  align-content: center;
+  width: 100vw;
+  height: 90vh;
+  margin: 0;
+  padding: 0;
+}

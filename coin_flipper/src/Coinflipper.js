@@ -14,7 +14,7 @@ class Coinflipper extends Component {
   }
 
   handleClick() {
-    let flip = Math.floor(Math.random() * 2);
+    const flip = Math.floor(Math.random() * 2);
     (flip === 1) ? flip = 'heads' : flip = 'tails';
     if(flip === 'heads') {
       this.setState(prevState => {
