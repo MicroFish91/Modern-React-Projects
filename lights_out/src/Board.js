@@ -1,88 +1,47 @@
-import React, {Component} from "react";
+import React, { Component } from "react";
 import Cell from "./Cell";
+import { createBoard, randomize, remapLights } from './boardHelpers.js';
 import './Board.css';
 
-
-/** Game board of Lights out.
- *
- * Properties:
- *
- * - nrows: number of rows of board
- * - ncols: number of cols of board
- * - chanceLightStartsOn: float, chance any cell is lit at start of game
- *
- * State:
- *
- * - hasWon: boolean, true when board is all off
- * - board: array-of-arrays of true/false
- *
- *    For this board:
- *       .  .  .
- *       O  O  .     (where . is off, and O is on)
- *       .  .  .
- *
- *    This would be: [[f, f, f], [t, t, f], [f, f, f]]
- *
- *  This should render an HTML table of individual <Cell /> components.
- *
- *  This doesn't handle any clicks --- clicks are on individual cells
- *
- **/
-
 class Board extends Component {
-
   constructor(props) {
-    super(props);
-
-    // TODO: set initial state
-  }
-
-  /** create a board nrows high/ncols wide, each cell randomly lit or unlit */
-
-  createBoard() {
-    let board = [];
-    // TODO: create array-of-arrays of true/false values
-    return board
-  }
-
-  /** handle changing a cell: update board & determine if winner */
-
-  flipCellsAround(coord) {
-    let {ncols, nrows} = this.props;
-    let board = this.state.board;
-    let [y, x] = coord.split("-").map(Number);
-
-
-    function flipCell(y, x) {
-      // if this coord is actually on board, flip it
-
-      if (x >= 0 && x < ncols && y >= 0 && y < nrows) {
-        board[y][x] = !board[y][x];
-      }
+    super(props)
+    let { rows, cols, startNum } = this.props;
+  
+    this.state = {
+      rows: rows,
+      cols: cols,
+      board: randomize(startNum, rows, cols, createBoard(rows, cols))
     }
-
-    // TODO: flip this cell and the cells around it
-
-    // win when every cell is turned off
-    // TODO: determine is the game has been won
-
-    this.setState({board, hasWon});
+    this.handleClick = this.handleClick.bind(this)
   }
 
+  mapBoard(){
+    let { board } = this.state;
+    let boardMap = board.map((col, cIndex) => (
+      <div className="Cell-row" key={`r${cIndex}`}>
+        {col.map((cell, rIndex) => (
+          <Cell key={`${cIndex}${rIndex}`} lit={(cell) ? 'Cell-lit' : 'Cell'} handleClick={this.handleClick} value={`${cIndex},${rIndex}`} />
+        ))}
+      </div>
+    ))
+    return boardMap;
+  }
 
-  /** Render game board or winning message. */
-
+  handleClick(e){
+    let [cIndex, rIndex] = e.target.id.split(',');
+    let newBoard = remapLights(parseInt(cIndex), parseInt(rIndex), this.state.board);
+    console.log(newBoard);
+    this.setState({ board: newBoard });
+  }
+  
   render() {
-
-    // if the game is won, just show a winning msg & render nothing else
-
-    // TODO
-
-    // make table board
-
-    // TODO
+    return (
+      <div className="Board">
+          { this.mapBoard() }
+      </div>
+    )
   }
 }
-
 
 export default Board;
