@@ -1,10 +1,10 @@
 import React from 'react'
 import "./Cell.css"
 
-function Cell({ lit, handleClick, value }){
+function Cell({ lit, value }){
     
   return (
-    <div className={lit} onClick={handleClick} id={value}>
+    <div className={lit} id={value}>
         
     </div>
   )

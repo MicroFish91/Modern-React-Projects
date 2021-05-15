@@ -13,7 +13,19 @@ class Board extends Component {
       cols: cols,
       board: randomize(startNum, rows, cols, createBoard(rows, cols))
     }
-    this.handleClick = this.handleClick.bind(this)
+    this.handleClick = this.handleClick.bind(this);
+  }
+
+  checkWin(board){
+    return board.every(row => {
+      return row.every(bool => bool === false);
+    });
+  }
+
+  handleClick(e){
+    let [cIndex, rIndex] = e.target.id.split(',');
+    let newBoard = remapLights(parseInt(cIndex), parseInt(rIndex), this.state.board);
+    this.setState({ board: newBoard });
   }
 
   mapBoard(){
@@ -21,24 +33,18 @@ class Board extends Component {
     let boardMap = board.map((col, cIndex) => (
       <div className="Cell-row" key={`r${cIndex}`}>
         {col.map((cell, rIndex) => (
-          <Cell key={`${cIndex}${rIndex}`} lit={(cell) ? 'Cell-lit' : 'Cell'} handleClick={this.handleClick} value={`${cIndex},${rIndex}`} />
+          <Cell key={`${cIndex}${rIndex}`} lit={(cell) ? 'Cell-lit' : 'Cell'} value={`${cIndex},${rIndex}`} />
         ))}
       </div>
     ))
     return boardMap;
   }
-
-  handleClick(e){
-    let [cIndex, rIndex] = e.target.id.split(',');
-    let newBoard = remapLights(parseInt(cIndex), parseInt(rIndex), this.state.board);
-    console.log(newBoard);
-    this.setState({ board: newBoard });
-  }
   
   render() {
+    let hasWon = this.checkWin(this.state.board);
     return (
-      <div className="Board">
-          { this.mapBoard() }
+      <div className="Board" onClick={this.handleClick}>
+          { (!hasWon) ? this.mapBoard() : 'You win!'}
       </div>
     )
   }
