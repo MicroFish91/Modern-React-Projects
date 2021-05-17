@@ -1,6 +1,7 @@
 import { faEdit, faTrashAlt } from '@fortawesome/free-solid-svg-icons';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import React, { Component } from 'react';
+import './ToDo.css';
 
 class ToDo extends Component {
   constructor(props) {
@@ -32,7 +33,7 @@ class ToDo extends Component {
   render() {
     const { willEdit } = this.state;
     return (
-      <div className="Todo">
+      <div className="Todo-container">
         { (!willEdit) ? this.renderDefault() : this.renderEdit() }
       </div>
     )
@@ -41,17 +42,19 @@ class ToDo extends Component {
   renderDefault(){
     const { todoItem } = this.props;
     return (
-      <div>
+      <div className="Todo">
         <div className="Todo-item">{todoItem}</div>
-        <FontAwesomeIcon icon={faEdit} onClick={this.toggleEdit} />
-        <FontAwesomeIcon icon={faTrashAlt} onClick={this.handleDelete} />
+        <div className="Todo-icons">
+          <FontAwesomeIcon className="Todo-icon" icon={faEdit} onClick={this.toggleEdit} />
+          <FontAwesomeIcon className="Todo-icon" icon={faTrashAlt} onClick={this.handleDelete} />
+        </div>
       </div>
     )
   }
 
   renderEdit(){
     return (
-      <div>
+      <div className="Todo-edit">
         <input type="text" onChange={this.handleChange} />
         <button onClick={this.handleEdit}>SAVE</button>
       </div>

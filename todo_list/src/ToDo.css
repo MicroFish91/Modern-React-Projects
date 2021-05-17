@@ -1,0 +1,55 @@
+.Todo-container {
+  width: 98%;
+}
+
+.Todo {
+  display: flex;
+  justify-content: flex-start;
+  width: 98%;
+  height: 4vh;
+  background-color: salmon;
+  margin: 0.3em;
+}
+
+.Todo-item {
+  display: flex;
+  justify-content: flex-start;
+  height: 75%;
+  width: 80%;
+  padding: 0.5em;
+}
+
+.Todo-icons {
+  display: flex;
+  justify-content: flex-end;
+  align-items: flex-end;
+  height: 75%;
+  width: 12%;
+}
+
+.Todo-icon {
+  padding-left: 0.15em;
+  padding-right: 0.15em;
+  cursor: pointer;
+}
+
+.Todo-edit {
+  display: flex;
+  justify-content: flex-start;
+  align-items: center;
+  width: 98%;
+  height: 4vh;
+  background-color: salmon;
+  margin: 0.3em;
+}
+
+.Todo-edit input {
+  height: 75%;
+  margin-left: 0.4em;
+}
+
+.Todo-edit button {
+  height: 89%;
+  margin-left: 0.4em;
+  background-color: #FF6666;
+}

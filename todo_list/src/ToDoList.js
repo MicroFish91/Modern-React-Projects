@@ -2,6 +2,7 @@ import React, { Component } from 'react';
 import { v4 as uuidv4 } from 'uuid';
 import Todo from './ToDo';
 import ToDoForm from './ToDoForm';
+import './ToDoList.css';
 
 class ToDoList extends Component {
   constructor(props) {
@@ -37,8 +38,8 @@ class ToDoList extends Component {
     const { todoItems } = this.state;
     return (
       <div className="ToDoList">
-        <h1>Todo List!</h1>
-        <h4>A Simple React Todo List App</h4> <hr />
+        <h1>Todo List</h1>
+        <h4>A Simple React Todo List</h4>
         { todoItems.map((todoItem, index) => (
             <Todo deleteTodo={this.deleteTodo} editTodo={this.editTodo} id={index} key={uuidv4()} todoItem={todoItem}  />
         ))}

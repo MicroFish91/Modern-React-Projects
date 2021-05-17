@@ -1,0 +1,9 @@
+.ToDoForm input {
+  height: 2.5rem;
+}
+
+.ToDoForm button {
+	height:3rem;
+  background-color: salmon;
+  background-color: 255,255,255,0.1;
+}
