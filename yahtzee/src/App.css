@@ -1,0 +1,17 @@
+body {
+  
+}
+
+h1{
+  font-size: 3em;
+  color: darkmagenta;
+}
+
+.App {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin: 0;
+  height: 100vh;
+  width: 100vw;
+}
