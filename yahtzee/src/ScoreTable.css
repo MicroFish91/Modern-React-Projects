@@ -1,0 +1,15 @@
+.ScoreTable {
+  background-color: tan;
+  height: 73%;
+  margin: 0;
+}
+
+.ScoreTable-upper-section {
+  height: 45%;
+}
+
+
+
+.ScoreTable-lower-section {
+  height: 55%;
+}

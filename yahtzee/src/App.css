@@ -2,9 +2,15 @@ body {
   
 }
 
-h1{
-  font-size: 3em;
+h1 {
+  font-size: 4em;
   color: darkmagenta;
+}
+
+h2 {
+  font-size: 1.9em;
+  text-align: center;
+  text-decoration: underline;
 }
 
 .App {
@@ -14,4 +20,5 @@ h1{
   margin: 0;
   height: 100vh;
   width: 100vw;
+  background-color: lightskyblue;
 }
