@@ -42,7 +42,7 @@ class Game extends Component {
           <h1 className='Game-title'>Yahtzee!</h1>
             {(this.state.rerolls > 0) ? this.renderDice() : this.renderGameOver()}
         </header>
-        <ScoreTable dice={this.state.dice} />
+        <ScoreTable dice={this.state.dice} points={this.state.points} />
       </div>
     )
   }

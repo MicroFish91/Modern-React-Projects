@@ -25,33 +25,32 @@ function numOfKind(number, array){
 
 function findUnique(array){
   let cache = {};
-  let score = 0;
   let newArray = [];
   array.forEach(number => {
     if(!cache[number]){
       cache[number] = true;
       newArray.push(number);
     }
-    score += number;
   })
-  return [newArray, score];
+  return newArray;
 }
 
 // /(.)\1{2}(.)\2|(.)\3(.)\4{2}/
 function fullHouse(array){
-  let sortedArray = [ ...array].sort();
-  let sortedString = sortedArray.join('');
-  let result = /(.)\1{2}(.)\2|(.)\3(.)\4{2}/.test(sortedString);
-  return (result) ? sum(array) : 0;
+  const sortedArray = [ ...array].sort();
+  const sortedString = sortedArray.join('');
+  const result = /(.)\1{2}(.)\2|(.)\3(.)\4{2}/.test(sortedString);
+  return (result) ? 25 : 0;
 }
 
 function straight(num, array){
-  let straightPattern;
+  let straightPattern, score;
   (num === 4) ? straightPattern = /1234|2345|3456/ : straightPattern = /12345|23456/;
-  let [ uniqueArray, score] = findUnique(array);
-  let sortedArray = uniqueArray.sort();
-  let sortedString = sortedArray.join('');
-  let result = sortedString.match(straightPattern);
+  (num === 4) ? score = 30 : score = 40;
+  const uniqueArray = findUnique(array);
+  const sortedArray = uniqueArray.sort();
+  const sortedString = sortedArray.join('');
+  const result = sortedString.match(straightPattern);
   return (result) ? score : 0;
 }
 
@@ -62,12 +61,8 @@ function sum(array){
 }
 
 function yahtzee(array){
-  let score = 0;
-  let result = array.every(num => {
-    score += num;
-    return (num === array[0]);
-  });
-  return (result) ? score : 0;
+  const result = array.every(num => num === array[0]);
+  return (result) ? 50 : 0;
 }
 
 export { countAndSumInteger, fullHouse, numOfKind, straight, sum, yahtzee };

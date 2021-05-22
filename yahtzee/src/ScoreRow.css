@@ -1,0 +1,20 @@
+.ScoreRow {
+  background-color: tan;
+  width: 100%;
+}
+
+.ScoreRow-locked {
+  background-color: green;
+  border: 2px solid green;
+  width: 100%;
+}
+
+.ScoreRow-item-title {
+  width: 75%;
+  text-align: left;
+}
+
+.ScoreRow-item-score {
+  width: 15%;
+  text-align: right;
+}

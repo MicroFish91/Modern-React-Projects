@@ -1,8 +1,14 @@
-function ScoreRow(props) {
+import './ScoreRow.css';
+
+function ScoreRow({ id, locked, score, title, lockScore }) {
+  function handleClick(){
+    lockScore(id, score);
+  }
+
   return (
-    <tr>
-      <td>{props.title}</td>
-      <td>{props.score}</td>
+    <tr className={ (!locked) ? "ScoreRow" : "ScoreRow-locked" } onClick={ (!locked) && handleClick } >
+      <td>{title}</td>
+      <td>{score}</td>
     </tr>
   )
 }
