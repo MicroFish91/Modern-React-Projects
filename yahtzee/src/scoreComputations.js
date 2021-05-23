@@ -62,7 +62,7 @@ function sum(array){
 
 function yahtzee(array){
   const result = array.every(num => num === array[0]);
-  return (result) ? 50 : 0;
+  return (result && array.length) ? 50 : 0;
 }
 
 export { countAndSumInteger, fullHouse, numOfKind, straight, sum, yahtzee };

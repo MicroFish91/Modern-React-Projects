@@ -11,12 +11,13 @@ class ScoreTable extends Component {
        locked: new Array(13).fill(false),
        scores: new Array(13).fill(0)
     }
-    this.lockScore = this.lockScore.bind(this)
+    this.lockScore = this.lockScore.bind(this);
   }
   
   render() {
-    let { dice } = this.props;
+    let { clearScores, dice, updatePoints } = this.props;
     let { locked, scores } = this.state;
+    ( clearScores ) && this.resetTable();
     return (
       <div className="ScoreTable">
         <section className="ScoreTable-upper-section">
@@ -25,45 +26,55 @@ class ScoreTable extends Component {
             <tbody>
               <ScoreRow 
               id={0}
-              locked={ locked[0] } 
+              locked={ locked[0] }
+              lockScore={ this.lockScore }
+              title={"Ones"}  
               score={ (!locked[0]) ? countAndSumInteger(1, dice) : scores[0] } 
-              title={"Ones"} 
-              lockScore={ this.lockScore } />
+              updatePoints={ updatePoints } />
 
               <ScoreRow 
               id={1}
               locked={ locked[1] } 
-              score={ (!locked[1]) ? countAndSumInteger(2, dice) : scores[1] } 
+              lockScore={ this.lockScore } 
               title={"Twos"} 
-              lockScore={ this.lockScore } />
+              score={ (!locked[1]) ? countAndSumInteger(2, dice) : scores[1] } 
+              updatePoints={ updatePoints } />
 
               <ScoreRow
               id={2} 
               locked={ locked[2] } 
-              score={ (!locked[2]) ? countAndSumInteger(3, dice) : scores[2] } 
+              lockScore={ this.lockScore}
               title={"Threes"} 
-              lockScore={ this.lockScore} />
+              score={ (!locked[2]) ? countAndSumInteger(3, dice) : scores[2] } 
+              updatePoints={ updatePoints } />
 
               <ScoreRow
               id={3} 
               locked={ locked[3] } 
-              score={ (!locked[3]) ? countAndSumInteger(4, dice) : scores[3] } 
+              lockScore={ this.lockScore }
               title={"Fours"} 
-              lockScore={ this.lockScore } />
+              score={ (!locked[3]) ? countAndSumInteger(4, dice) : scores[3] } 
+              updatePoints={ updatePoints } />
               
               <ScoreRow 
               id={4}
               locked={ locked[4] } 
+              lockScore={ this.lockScore }
+              title={"Fives"}
               score={ (!locked[4]) ? countAndSumInteger(5, dice) : scores[4] } 
-              title={"Fives"} 
-              lockScore={ this.lockScore } />
+              updatePoints={ updatePoints } />
 
               <ScoreRow 
               id={5}
               locked={ locked[5] } 
-              score={ (!locked[5]) ? countAndSumInteger(6, dice) : scores[5] } 
+              lockScore={ this.lockScore }
               title={"Sixes"} 
-              lockScore={ this.lockScore } />
+              score={ (!locked[5]) ? countAndSumInteger(6, dice) : scores[5] } 
+              updatePoints={ updatePoints } />
+
+              <ScoreRow
+              score={ sum(scores.slice(0, 6)) }
+              title={"Upper Total"} />
             </tbody>
           </table>
         </section>
@@ -74,51 +85,63 @@ class ScoreTable extends Component {
               <ScoreRow
               id={6} 
               locked={ locked[6] } 
-              score={ (!locked[6]) ? numOfKind(3, dice) : scores[6] } 
+              lockScore={ this.lockScore }
               title={"Three of Kind"} 
-              lockScore={ this.lockScore } />
+              score={ (!locked[6]) ? numOfKind(3, dice) : scores[6] } 
+              updatePoints={ updatePoints } />
+
 
               <ScoreRow 
               id={7}
               locked={ locked[7] } 
-              score={ (!locked[7]) ? numOfKind(4, dice) : scores[7] } 
+              lockScore={ this.lockScore }
               title={"Four of Kind"} 
-              lockScore={ this.lockScore } />
+              score={ (!locked[7]) ? numOfKind(4, dice) : scores[7] } 
+              updatePoints={ updatePoints } />
 
               <ScoreRow
               id={8} 
               locked={ locked[8] } 
-              score={ (!locked[8]) ? fullHouse(dice) : scores[8] } 
+              lockScore={ this.lockScore }
               title={"Full House"} 
-              lockScore={ this.lockScore } />
+              score={ (!locked[8]) ? fullHouse(dice) : scores[8] } 
+              updatePoints={ updatePoints } />
 
               <ScoreRow 
               id={9}
               locked={ locked[9] } 
-              score={ (!locked[9]) ? straight(4, dice) : scores[9] } 
+              lockScore={ this.lockScore }
               title={"Small Straight"} 
-              lockScore={ this.lockScore } />
+              score={ (!locked[9]) ? straight(4, dice) : scores[9] } 
+              updatePoints={ updatePoints } />
 
               <ScoreRow
               id={10} 
               locked={ locked[10] } 
-              score={ (!locked[10]) ? straight(5, dice) : scores[10] } 
+              lockScore={ this.lockScore }
               title={"Large Straight"} 
-              lockScore={ this.lockScore } />
+              score={ (!locked[10]) ? straight(5, dice) : scores[10] } 
+              updatePoints={ updatePoints } />
 
               <ScoreRow
               id={11} 
               locked={ locked[11] } 
-              score={ (!locked[11]) ? yahtzee(dice) : scores[11] } 
+              lockScore={ this.lockScore }
               title={"Yahtzee"} 
-              lockScore={ this.lockScore } />
+              score={ (!locked[11]) ? yahtzee(dice) : scores[11] } 
+              updatePoints={ updatePoints } />
 
               <ScoreRow 
               id={12}
               locked={ locked[12] } 
-              score={ (!locked[12]) ? sum(dice) : scores[12] } 
+              lockScore={ this.lockScore }
               title={"Chance"} 
-              lockScore={ this.lockScore } />
+              score={ (!locked[12]) ? sum(dice) : scores[12] } 
+              updatePoints={ updatePoints } />
+
+              <ScoreRow
+              score={ sum(scores.slice(6)) }
+              title={"Lower Total"} />
             </tbody>
           </table>
         </section>
@@ -131,7 +154,17 @@ class ScoreTable extends Component {
     let newScores = [ ...this.state.scores ];
     newLocked[id] = !newLocked[id];
     newScores[id] = score;
+    this.props.resetTurn();
+    this.props.incScoresLocked();
     this.setState({ locked: newLocked, scores: newScores });
+  }
+
+  resetTable(){
+    this.props.resetClearScores();
+    this.setState({
+      locked: new Array(13).fill(false),
+      scores: new Array(13).fill(0)
+    });
   }
 }
 
