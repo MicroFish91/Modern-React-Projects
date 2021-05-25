@@ -1,7 +1,38 @@
 .ScoreTable {
-  background-color: tan;
-  height: 73%;
+  background-color: white;
+  height: 80%;
+}
+
+.ScoreTable-upper-title {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 15%;
   margin: 0;
+  padding: 0.2rem;
+  font-size: 1.9rem;
+  text-decoration: underline;
+  padding: 0.3rem;
+  padding-top: 0.5rem;
+}
+
+.ScoreTable-lower-title {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 15%;
+  margin: 0;
+  padding: 0.2rem;
+  font-size: 1.9rem;
+  text-decoration: underline;
+  padding: 0.3rem;
+}
+
+.ScoreTable table {
+  width: 90%;
+  margin: 0 auto;
+  height: auto;
+  min-width: 400px;
 }
 
 .ScoreTable-upper-section {
@@ -9,5 +40,5 @@
 }
 
 .ScoreTable-lower-section {
-  height: 55%;
+  height: 53.5%;
 }

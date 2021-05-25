@@ -1,20 +1,26 @@
 .ScoreRow {
-  background-color: tan;
   width: 100%;
+  color:#515152;
 }
 
 .ScoreRow-locked {
-  background-color: green;
-  border: 2px solid green;
   width: 100%;
+  color: black;
+  font-weight: 600;
 }
 
 .ScoreRow-item-title {
-  width: 75%;
   text-align: left;
 }
 
 .ScoreRow-item-score {
-  width: 15%;
   text-align: right;
+}
+
+.ScoreRow > .ScoreRow-item-score:hover {
+  cursor: pointer
+}
+
+td, th {
+  border-bottom: 1px solid #7f7fd5;
 }

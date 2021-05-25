@@ -13,6 +13,16 @@ class ScoreTable extends Component {
     }
     this.lockScore = this.lockScore.bind(this);
   }
+
+  lockScore(id, score){
+    let newLocked = [ ...this.state.locked ];
+    let newScores = [ ...this.state.scores ];
+    newLocked[id] = !newLocked[id];
+    newScores[id] = score;
+    this.props.resetTurn();
+    this.props.incScoresLocked();
+    this.setState({ locked: newLocked, scores: newScores });
+  }
   
   render() {
     let { clearScores, dice, updatePoints } = this.props;
@@ -21,8 +31,8 @@ class ScoreTable extends Component {
     return (
       <div className="ScoreTable">
         <section className="ScoreTable-upper-section">
-          <h2 className="ScoreTable-upper-title">Upper</h2>
-          <table>
+          <div className="ScoreTable-upper-title">Upper</div>
+          <table className="ScoreTable-upper-table">
             <tbody>
               <ScoreRow 
               id={0}
@@ -79,8 +89,8 @@ class ScoreTable extends Component {
           </table>
         </section>
         <section className="ScoreTable-lower-section">
-          <h2 className="ScoreTable-lower-title">Lower</h2>
-          <table>
+          <div className="ScoreTable-lower-title">Lower</div>
+          <table className="ScoreTable-upper-table">
             <tbody>
               <ScoreRow
               id={6} 
@@ -147,16 +157,6 @@ class ScoreTable extends Component {
         </section>
       </div>
     )
-  }
-
-  lockScore(id, score){
-    let newLocked = [ ...this.state.locked ];
-    let newScores = [ ...this.state.scores ];
-    newLocked[id] = !newLocked[id];
-    newScores[id] = score;
-    this.props.resetTurn();
-    this.props.incScoresLocked();
-    this.setState({ locked: newLocked, scores: newScores });
   }
 
   resetTable(){

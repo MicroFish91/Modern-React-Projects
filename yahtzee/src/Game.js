@@ -13,13 +13,13 @@ class Game extends Component {
       dice: [],
       lockedDice: new Array(5).fill(false),
       points: 0,
-      rerolls: 5,
+      rerolls: 3,
       scoresLocked: 0
     }
     this.incScoresLocked = this.incScoresLocked.bind(this);
     this.resetClearScores = this.resetClearScores.bind(this);
     this.resetTurn = this.resetTurn.bind(this);
-    this.restartGame = this.restartGame.bind(this)
+    this.restartGame = this.restartGame.bind(this);
     this.rollDice = this.rollDice.bind(this);
     this.toggleLock = this.toggleLock.bind(this);
     this.updatePoints = this.updatePoints.bind(this);
@@ -84,7 +84,7 @@ class Game extends Component {
       dice: [],
       lockedDice: new Array(5).fill(false),
       points: 0,
-      rerolls: 5,
+      rerolls: 3,
       scoresLocked: 0
     });
   }
@@ -93,7 +93,7 @@ class Game extends Component {
     this.setState({ 
       dice: [], 
       lockedDice: new Array(5).fill(false),
-      rerolls: 5
+      rerolls: 3
     });
   }
 
@@ -112,7 +112,7 @@ class Game extends Component {
     let { rerolls } = this.state;
     return (
       <div className='Game-button-wrapper'>
-        <button className='Game-reroll' onClick={this.rollDice} >{rerolls} Rerolls Left</button>
+        <button className='Game-reroll' onClick={this.rollDice} >{rerolls} Rolls Left</button>
       </div>
     )
   }
