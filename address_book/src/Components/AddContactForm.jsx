@@ -48,7 +48,9 @@ const AddContactForm = ({ addContact, contact, toggleEdit }) => {
 
   const handleCancel = (e) => {
     addContact.setToggle(false); 
-    toggleEdit(false);
+    if(toggleEdit){
+      toggleEdit(false);
+    }
   }
 
   return (
