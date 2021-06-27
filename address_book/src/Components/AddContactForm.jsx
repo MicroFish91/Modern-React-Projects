@@ -46,6 +46,11 @@ const AddContactForm = ({ addContact, contact, toggleEdit }) => {
     }    
   }
 
+  const handleCancel = (e) => {
+    addContact.setToggle(false); 
+    toggleEdit(false);
+  }
+
   return (
     <Form className="AddContactForm offset-2 col-8 offset-2 p-3" onSubmit={handleSubmit} >
       <Form.Row>
@@ -105,7 +110,7 @@ const AddContactForm = ({ addContact, contact, toggleEdit }) => {
         Submit
       </Button>
 
-      <Button onClick={(e) => addContact.setToggle(false)} className="bg-dark m-1" variant="dark">
+      <Button onClick={handleCancel} className="bg-dark m-1" variant="dark">
         Cancel
       </Button>
     </Form>
