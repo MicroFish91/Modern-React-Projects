@@ -7,7 +7,7 @@ const CalcButton = ({ text, color, span, updateDisplay }) => {
   }
 
   const handleClick = () => {
-    // updateDisplay();
+    updateDisplay(text);
   }
 
   return ( 

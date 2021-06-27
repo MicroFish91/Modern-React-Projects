@@ -1,4 +1,7 @@
+import equals from './equals';
 import operations from './operations';
+import percent from './percent';
+import plusOrMinus from './plusOrMinus';
 
 export default function calcEmulator(currentInputs, display, newInput){
   let updatedCalcInputs = [...currentInputs];
@@ -10,29 +13,32 @@ export default function calcEmulator(currentInputs, display, newInput){
       newDisplay = "";
       break;
     case '+/-':
-      // Call External Function
+      [updatedCalcInputs, newDisplay] = plusOrMinus(currentInputs, display);
       break;
     case '%':
-      // Call External Function
+      [updatedCalcInputs, newDisplay] = percent(currentInputs, display);
       break;
     case '/':
-      [updatedCalcInputs, newDisplay] = operations(currentInputs, display, newInput, '/');
+      [updatedCalcInputs, newDisplay] = operations(currentInputs, display, '/');
       break;
-    case 'X':
-      [updatedCalcInputs, newDisplay] = operations(currentInputs, display, newInput, 'X');
+    case '*':
+      [updatedCalcInputs, newDisplay] = operations(currentInputs, display, '*');
       break;
     case '-':
-      [updatedCalcInputs, newDisplay] = operations(currentInputs, display, newInput, '-');
+      [updatedCalcInputs, newDisplay] = operations(currentInputs, display, '-');
       break;
     case '+':
-      [updatedCalcInputs, newDisplay] = operations(currentInputs, display, newInput, '+');
+      [updatedCalcInputs, newDisplay] = operations(currentInputs, display, '+');
       break;
     case '=':
-      // Call External Function
+      [updatedCalcInputs, newDisplay] = equals(currentInputs, display);
       break;
     default:
-      updatedCalcInputs[updatedCalcInputs.length - 1] = updatedCalcInputs[updatedCalcInputs.length - 1] + newInput;
-      newDisplay += newInput;
+      if (newDisplay == 0){
+        newDisplay = newInput;
+      } else {
+        newDisplay += newInput;
+      }
   }
 
   return [updatedCalcInputs, newDisplay];

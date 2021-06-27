@@ -1,10 +1,10 @@
-export default function addOperator(currentInputs, display, newInput, operator){
+export default function addOperator(currentInputs, display, operator){
   let newInputs = [...currentInputs];
   let newDisplay = display;
 
   switch(currentInputs.length){
     case 0:
-      newInputs[0] = '0';
+      newInputs[0] = display;
       newInputs[1] = operator;
       newDisplay = 0;
       break;
@@ -22,7 +22,7 @@ export default function addOperator(currentInputs, display, newInput, operator){
       delete newInputs[2];
       break;
     default:
-      console.log('Error: Invalid length');
+      console.log(`Error: addOperator: ${operator}`);
   }
 
   return [newInputs, newDisplay];
