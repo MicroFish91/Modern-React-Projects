@@ -1,0 +1,61 @@
+.Contacts {
+  min-height: 40vh;
+  height: auto;
+  box-shadow: rgba(60, 64, 67, 0.3) 0px 1px 2px 0px, rgba(60, 64, 67, 0.15) 0px 1px 3px 1px;
+  background-color: white;
+  color: white;
+}
+
+.Contact {
+  width: 100%;
+}
+
+.Contact-info {
+  color: black;
+  margin-left: 1em;
+}
+
+.Contact-info:hover {
+  text-decoration: underline;
+}
+
+.Contact-short {
+  display: flex;
+  justify-content: space-between;
+}
+
+.Contact-short:hover {
+  background-color: tan;
+  color: black;
+}
+
+.address-icons {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin-right: 1em;
+}
+
+.address-icons:hover {
+  color: black;
+}
+
+.icon-heart:hover {
+  color: white !important;
+}
+
+.icon-edit:hover {
+  color: white !important;
+}
+
+.icon-trash:hover {
+  color: white !important;
+}
+
+.icon-heart-white {
+  color: white;
+}
+
+.icon-heart-white:hover {
+  color: black;
+}

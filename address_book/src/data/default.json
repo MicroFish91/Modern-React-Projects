@@ -1,0 +1,64 @@
+{
+  "contacts": [
+    {
+      "id": "abcd1234",
+      "name": "Matthew Fisher",
+      "phone": "555-555-5555",
+      "email": "something@gmail.com",
+      "addressOne": "addressOne",
+      "addressTwo": "addressTwo",
+      "city": "Seattle",
+      "state": "WA",
+      "zip": "98753",
+      "favorite": false
+    },
+    {
+      "id": "abcde12345",
+      "name": "Joe",
+      "phone": "666-666-6666",
+      "email": "something1@gmail.com",
+      "addressOne": "addressOneaaa",
+      "addressTwo": "addressTwoaaa",
+      "city": "Seattle",
+      "state": "TX",
+      "zip": "98722",
+      "favorite": true
+    },
+    {
+      "id": "abcdef123456",
+      "name": "John",
+      "phone": "777-777-7777",
+      "email": "something3@gmail.com",
+      "addressOne": "addressOneagea",
+      "addressTwo": "addressTwogeagea",
+      "city": "Austin",
+      "state": "TX",
+      "zip": "75651",
+      "favorite": false
+    },
+    {
+      "id": "abcdefg1234567",
+      "name": "Christie",
+      "phone": "888-888-8888",
+      "email": "something5@gmail.com",
+      "addressOne": "addresszvcxz",
+      "addressTwo": "addresszvda",
+      "city": "Houston",
+      "state": "TX",
+      "zip": "14234",
+      "favorite": false
+    },
+    {
+      "id": "abcdefgh12345678",
+      "name": "Amy",
+      "phone": "999-999-9999",
+      "email": "something12@gmail.com",
+      "addressOne": "gdsageageag",
+      "addressTwo": "geageageagea",
+      "city": "San Antonio",
+      "state": "TX",
+      "zip": "11241",
+      "favorite": false
+    }
+  ]
+}
